@@ -94,6 +94,7 @@ public class LoopEx {
         	 * ***
         	 * ****
         	 * *****
+        	 * 
         	 * *****
         	 * ****
         	 * ***
@@ -140,7 +141,7 @@ public class LoopEx {
         			 System.out.print(String.format("%2c\t", '-'));
         		 }
         		 //날짜
-        		 for(int j =0; j < 7 - offset; j++ ) { 
+        		 for(int j =0; j < 7 - offset; j++) { 
         			 if(day <= 30) {
         			 System.out.print(String.format("%2d\t", day));
         			 day++;
@@ -151,6 +152,7 @@ public class LoopEx {
         		 offset = 0;
         		 System.out.println();
         	 }
+        	 
         	 
         	
         	 
