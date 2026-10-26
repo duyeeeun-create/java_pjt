@@ -59,7 +59,7 @@ public class MainClass {
 		
 		int selectedMenuNumber = scanner.nextInt();
 
-
+                                                                                                                                                                             
 		 String memberID;
 		 String memberPW;
 		 String memberMail;
