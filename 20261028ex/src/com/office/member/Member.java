@@ -7,7 +7,7 @@ public class Member {
 	/*
 	 * 아이디, 비밀번호, 메일주소, 연락처*/
 	String memberId;
-	String memberPW;
+	int memberPW;
 	String memberMail;
 	String memberPhone;
 	
@@ -19,7 +19,7 @@ public class Member {
 	
 	
 	
-	public Member(String memberId, String memberPW, String memberMail, String memberPhone) {
+	public Member(String memberId, int memberPW, String memberMail, String memberPhone) {
 		this.memberId = memberId;
 		this.memberPW = memberPW;
 		this.memberMail = memberMail;

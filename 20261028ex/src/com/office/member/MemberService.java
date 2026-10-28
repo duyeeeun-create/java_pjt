@@ -21,7 +21,13 @@ public class MemberService {
 		String memberId = scanner.next();
 		
 		System.out.println("Input new member PW");
-		String memberPW = scanner.next();
+		String memberPW = scanner.next(); 
+		
+		if(memberPW >= 8 && memberPW < 13) {
+			System.out.println("사용가능");
+		}else {
+			return;
+		}
 		
 		System.out.println("Input new member MAIL");
 		String memberMail = scanner.next();
@@ -104,7 +110,7 @@ public class MemberService {
    
    public void doDelete(Scanner scanner) {
 		
-	   System.out.println("Input member ID");
+	    System.out.println("Input member ID");
 		String memberId = scanner.next();
 		
 		System.out.println("Input member PW");
@@ -117,4 +123,18 @@ public class MemberService {
 		}
 	   
 	}
+   public void doView(Scanner scanner) {
+	
+	   System.out.println("Input member ID");
+		String memberId = scanner.next();
+		
+		System.out.println("Input member PW");
+		String memberPW = scanner.next();
+		
+		Member searchedMember =  db.memberDB.get(memberId);
+		
+		
+		
+		
+}
 }

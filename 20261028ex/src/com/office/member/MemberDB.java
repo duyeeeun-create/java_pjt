@@ -1,6 +1,7 @@
 package com.office.member;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MemberDB {
      // DB Class
@@ -8,5 +9,11 @@ public class MemberDB {
 	
 	HashMap<String, Member> memberDB = new HashMap<String, Member>();
 	                 
-	
+	public void MemberInfo() {
+		for (Map.Entry<String, Member> entry : memberDB.entrySet()) {
+		    System.out.println("회원정보: " + entry.getKey());}
+		  
+	}
 }
+
+
