@@ -15,16 +15,21 @@ public class MemberDumy {
 		System.out.println("[MemberDumy] initMemberDumyData");
 		
 		String[] memberIDs = {"gildong", "chanho", "saeri"};
-		String[] memberPWs = {"1234", "5678", "9012"};
+		String[] memberPWs = {"12345678", "56789012", "901234567"};
 		String[] memberMAILs = {"gildong@gmail.com", "chanho@naver.com", "saeri@daum.com"};
 		String[] memberPHONEs = {"010-1234-5678", "010-1111-2222", "010-3333-4444"};
 		
 		
 		for (int i = 0; i < memberIDs.length; i++) {
 			
-			Member member = new Member(memberIDs[i],memberPWs[i],memberMAILs[i],memberPHONEs[i]);
+			Member member = new Member(memberIDs[i], memberPWs[i], memberMAILs[i], memberPHONEs[i]);
 			db.memberDB.put(memberIDs[i], member);
 		}
 	}
+	
+	/*public void resetDumyData() {
+		db.memberDB.clear();
+		
+	}*/
 	
 }

@@ -1,0 +1,18 @@
+package com.office.methodex02;
+
+public class Greet {
+
+	//메서드
+	public void printGreetWord(){
+		
+		System.out.println("안녕하세요");
+	}
+	
+   public void printGreetWordByName(String name){
+		
+		System.out.println(name +"님 안녕하세요");
+		
+		
+	}
+	
+}
