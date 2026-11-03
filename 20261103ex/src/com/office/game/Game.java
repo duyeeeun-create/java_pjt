@@ -8,7 +8,7 @@ public class Game {
 	private Dog dog;
 	private ICharactor[] iCharactors;
 	
-	private Game(Bear bear,Robot robot, AirPlain airPlain,Dog dog) {
+	public Game(Bear bear,Robot robot, AirPlain airPlain,Dog dog) {
 		this.bear = bear;
 		this.robot = robot;
 		this.airPlain = airPlain;
