@@ -5,34 +5,75 @@ import java.util.Scanner;
 
 public class MemberController implements MemberConfig{
 	
-
-	
-	
-	public void execute () {
+	public void execute() {
 		
 		Scanner scanner = new Scanner(System.in);	
 		boolean systmFlag = true;
 		MemberService memberService = new MemberService();
 		
+		if(IS_DEV) 
+			
+			new MemberDumy().signUpForDumy(memberService);
+		
+		String mamId;
+		String mamPw;
+		String mamMail;
+		String mamPhone;
+		MemberDto memberDto ;
+		
 		while(systmFlag) {
-			System.out.println("1.SIGN-UP  2.SIGN-IN  3.MODIFY  4.DELTE  99.SYSTEM-OUT");
+			System.out.println("1.SIGN-UP  2.SIGN-IN  3.MODIFY  4.DELETE  99.SYSTEM-OUT");
 			int selectedMenuNum = scanner.nextInt();
 			
 			switch (selectedMenuNum) {
 			case SIGN_UP:
-				memberService.signup(scanner);
+			    System.out.println("Input new member ID");
+			    mamId =	scanner.next();
+			
+			    System.out.println("Input new member PW");
+			    mamPw =	scanner.next();
+			
+		   	    System.out.println("Input new member MAIL");
+			    mamMail = scanner.next();
+			
+			    System.out.println("Input new member PHONE");
+			    mamPhone = scanner.next();
+			    
+		  	    memberDto = new MemberDto(mamId, mamPw, mamMail, mamPhone);
+				
+				memberService.signup(memberDto);
+				
 				break;
 
             case SIGN_IN:
-            	memberService.signIn(scanner);
+            	System.out.println("Input member ID");
+   			    mamId =	scanner.next();
+   			
+   			    System.out.println("Input member PW");
+   			    mamPw =	scanner.next();
+            	
+   			    memberDto = new MemberDto(mamId, mamPw, null, null);
+   			
+            	memberService.signIn(memberDto);
 				break;
 				
            case MODIFY:
-        	   memberService.modify(scanner);
+        	    memberService.modify();
 				break;
 				
-           case DELTE:
-        	   memberService.delete(scanner);
+           case DELETE:
+        	   /*
+        	    * 아이디 & 비번 인증후 삭제
+        	    * */
+        		System.out.println("Input member ID");
+   			    mamId =	scanner.next();
+   			
+   			    System.out.println("Input member PW");
+   			    mamPw =	scanner.next();
+   			    
+   			    memberDto = new MemberDto(mamId, mamPw, null, null);
+        	   
+        	    memberService.delete(memberDto);
 	            break;
            case SYSTEM_OUT:
         		systmFlag = false;
