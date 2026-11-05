@@ -5,11 +5,17 @@ import java.util.Scanner;
 
 public class MemberController implements MemberConfig{
 	
+	final private MemberService memberService;
+	
+	public MemberController(MemberService memberService) {
+		this.memberService = memberService;
+	}
+	
 	public void execute() {
 		
 		Scanner scanner = new Scanner(System.in);	
 		boolean systmFlag = true;
-		MemberService memberService = new MemberService();
+//		MemberService memberService = new MemberService();
 		
 		if(IS_DEV) 
 			
@@ -58,7 +64,37 @@ public class MemberController implements MemberConfig{
 				break;
 				
            case MODIFY:
-        	    memberService.modify();
+        	   /*id & pw -> 인증ok -> pw, mail,phone 수정*/
+        	    System.out.println("Input member ID!");
+  			    mamId =	scanner.next();
+  			
+  			    System.out.println("Input member PW!");
+  			    mamPw =	scanner.next();
+  			    
+  			   memberDto = new MemberDto(mamId, mamPw, null, null);
+  			   boolean isAuthentication =
+  					   memberService.doAuthenticationByMemIdAndMemPw(memberDto);
+  			   
+  			   if(isAuthentication) {
+  				   System.out.println("Input member PW!");
+  				  mamPw = scanner.next();
+  				   
+  				  System.out.println("Input member PHONE!");
+ 				   mamPhone = scanner.next();
+ 				   
+ 				  System.out.println("Input member MAIL!");
+ 				   mamMail = scanner.next();
+ 				   
+ 				   
+ 				   memberDto.setMamMail(mamMail);
+ 				   memberDto.setMamPhone(mamPhone);
+ 				   memberDto.setMamPw(mamPw);
+ 				   
+ 				   memberService.modify(memberDto);
+  			   }
+           	
+        	   
+        	   
 				break;
 				
            case DELETE:
@@ -74,6 +110,8 @@ public class MemberController implements MemberConfig{
    			    memberDto = new MemberDto(mamId, mamPw, null, null);
         	   
         	    memberService.delete(memberDto);
+        	    
+        	
 	            break;
            case SYSTEM_OUT:
         		systmFlag = false;
@@ -81,6 +119,6 @@ public class MemberController implements MemberConfig{
 	            break;
 			}
 		}
-	}
+	} 
 
 }

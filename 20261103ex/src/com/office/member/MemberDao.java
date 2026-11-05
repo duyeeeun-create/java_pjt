@@ -71,4 +71,11 @@ public class MemberDao {
 		
 	}
 
+	public MemberDto updateMemberByMemId(MemberDto memberDto) {
+		
+		db.put(memberDto.getMamId(), memberDto);
+		
+		return db.get(memberDto.getMamId());
+	}
+
 }
