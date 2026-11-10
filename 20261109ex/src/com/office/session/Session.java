@@ -21,12 +21,14 @@ public class Session {
 	}
 	
 /*getter*/
-	public HashMap<String, Object> getAttributies() {
-		return attributies;
+	public Object getAttribute(String name) {
+		return attributies.get(name);
 	}
+	
 	/*값을 넣어주는 친구 setter아님!!*/
 	public void setAttribute(String name, Object object) {
 		attributies.put(name, object);
+		//Session 유효시간 구현.....
 	}
 	
 	public void removeAttribute(String name) {

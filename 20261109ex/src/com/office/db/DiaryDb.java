@@ -11,9 +11,11 @@ public class DiaryDb {
 	private static DiaryDb diaryDb;
 	//멤버데이터, 다이어리 데이터
 	
-	 final private  HashMap<String, MemberDto> members; //  final private캡슐화
+	 final private  HashMap<String, MemberDto> members;
+	 //  final private캡슐화
 	
-	 final private HashMap<String, ArrayList<DiaryDto>> diaries; // str, [] -> array쓰기
+	 final private HashMap<String, ArrayList<DiaryDto>> diaries; 
+	 // str, [] -> array쓰기
 	
 	public DiaryDb() {
 		members = new HashMap<String, MemberDto>();
@@ -25,7 +27,9 @@ public class DiaryDb {
 			diaryDb = new DiaryDb();
 		
 		return diaryDb;
-	}// 싱클턴으로 하나만잇어야하니까
+	}
+	
+	// 싱클턴으로 하나만잇어야하니까
 /*
  * getters*/
 

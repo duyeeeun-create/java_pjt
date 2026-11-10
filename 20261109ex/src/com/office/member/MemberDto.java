@@ -6,13 +6,14 @@ public class MemberDto {
 	private String memPw; 
 	private String memMail; 
 	private String memPhone; 
+	//private boolean active = true;// 논리적 ) false 탈퇴 계정
 	
 	public MemberDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDto(String memId, String memPw, String memMail, String memPhone) {
-		super();
+		
 		this.memId = memId;
 		this.memPw = memPw;
 		this.memMail = memMail;

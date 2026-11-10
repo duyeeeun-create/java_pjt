@@ -2,6 +2,7 @@ package com.office.member;
 
 import java.util.Scanner;
 
+import com.office.config.Config;
 import com.office.menu.Menu;
 import com.office.session.Session;
 
@@ -58,7 +59,7 @@ public class MemberController {
 			
 			if(signInedMemberDto != null) {
 				System.out.println("SIGN-IN SUCCESS");
-				Session.getInstance().setAttribute("signInedMemberId",
+				Session.getInstance().setAttribute(Config.SIGNINED_MEMBER_ID,
 						signInedMemberDto.getMemId());
 			}else {
 				System.out.println("SIGN-IN FAIL");
@@ -67,16 +68,55 @@ public class MemberController {
 			break;
 			
        case Menu.MEMBER_SIGN_OUT:
+    	   Session.getInstance().removeAttribute(Config.SIGNINED_MEMBER_ID);
 	
-	break;
+	        break;
 	
-case Menu.MEMBER_MODIFY:
+       case Menu.MEMBER_MODIFY:
+    	   
+    	  MemberDto signInMemberDto = memberService.getMember();
+    	  
+    	  System.out.println("MemberID :" + signInMemberDto.getMemId());
+    	  System.out.println("MemberPW :" + signInMemberDto.getMemPw());
+    	  System.out.println("MemberMAIL :" + signInMemberDto.getMemMail());
+    	  System.out.println("MemberPHONE :" + signInMemberDto.getMemPhone());
+    	  
+    	    System.out.println("Input member new PW");
+			memPw = scanner.next();
+			
+			System.out.println("Input member new MAIL");
+			memMail = scanner.next();
+			
+			System.out.println("Input member new PHONE");
+			memPhone = scanner.next();
+			
+		int resultForModify =
+				memberService.modify(new MemberDto(
+					String.valueOf(	Session.getInstance().getAttribute(Config.SIGNINED_MEMBER_ID)),
+						memPw, memMail, memPhone));
+		
+			if(resultForModify == MemberService.MODIFY_SUCCESS) {
+				System.out.println("MEMBER UPDATE SUCCESS");
+			}else {
+				System.out.println("MEMBER UPDATE FAIL");
+			}
 	
-	break;
+	        break;
 	
-case Menu.MEMBER_DELETE:
+       case Menu.MEMBER_DELETE:
+    	   
+    	 int resultForDelete =  memberService.delete(String.valueOf(
+    			 Session.getInstance().getAttribute(Config.SIGNINED_MEMBER_ID)));
+    	 
+    	 if(resultForDelete == MemberService.DELETE_SUCCESS) {
+    		 System.out.println("DELETE SUCCESS");
+    		 Session.getInstance().removeAttribute(Config.SIGNINED_MEMBER_ID);
+    		 
+    	 }else {
+    		 System.out.println("DELETE FAIL");
+    	 }
 	
-	break;
+	        break;
 		}
 		
 	}
