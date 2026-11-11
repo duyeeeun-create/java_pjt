@@ -18,7 +18,7 @@ public class DiaryService {
 		return diaryDao.insertNewDiary(memId, diaryDto);
 		
 		
-	}
+	} 
 
 	public ArrayList<DiaryDto> readDiaries(String memId) {
 		
